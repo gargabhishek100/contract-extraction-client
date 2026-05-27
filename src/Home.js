@@ -4,7 +4,7 @@ import "./Home.css";
 
 export default function HomePage() {
   const [file, setFile] = useState(null);
-  const [currentId, setId] = useState(null);
+  const [, setId] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
