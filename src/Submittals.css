@@ -1,0 +1,67 @@
+/* .submittals-root {
+  min-height: 100vh;
+  background: linear-gradient(120deg,#e7f3ff 0%,#fafcff 90%);
+  display: flex; flex-direction:column; align-items: center; justify-content: flex-start;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  padding:0;
+}
+
+.submittals-card {
+  background: #fff; border-radius: 16px;
+  max-width: 640px; width: 96%;
+  margin: 38px auto;
+  box-shadow: 0 6px 28px rgba(40,96,173,.07);
+  padding: 32px 28px 28px 28px;
+  display: flex; flex-direction:column;
+  align-items: stretch;
+}
+
+.submittals-title {
+  font-size: 1.5rem; color:#204585; margin-bottom:10px; font-weight:700; margin-top:0;
+  letter-spacing:.02em;
+  text-align: center;
+}
+.sub-pdf { text-align: center; color: #4674a0; font-size:1.01rem; margin-bottom:18px;}
+
+.sub-back {
+  background: none; border: 0; color: #3170db;
+  font-size: 1rem; font-weight: 600;
+  margin-bottom: 8px; cursor:pointer; text-align: left;
+  align-self: flex-start; transition:color .2s;
+}
+.sub-back:hover { color: #10356a; text-decoration: underline; }
+
+.sub-list {
+  margin:22px 0 0 0; padding:0 0 0 6px; list-style-type: none;
+  display: flex; flex-direction:column; gap:16px;
+}
+.sub-list li {
+  box-shadow:0 1px 6px rgba(50,100,140,.03);
+  border-radius:9px;
+  padding: 16px 22px;
+  background: linear-gradient(90deg, #ecf6ff 60%, #f9fafd 110%);
+  display:inline-block; font-size:1.07rem; color:#263b6d;
+  transition: background .16s;
+  word-break: break-word;
+}
+.sub-item { font-weight:600; color:#194c98;}
+.sub-page { font-size:.97em; color:#4c637a; margin-left:9px;}
+.sub-reason { display:block; color:#748eb6; font-size:.98em; margin-top:2px;}
+
+.sub-empty {
+  padding: 37px 0; color: #bbc5d3; font-size: 1.07rem; text-align:center; font-style:italic;
+}
+
+.sub-error { color: #d9534f; font-weight: 600; margin: 18px 0;}
+.sub-spinner { display:flex; justify-content:center; margin:27px 0;}
+.sub-loader {
+  width: 33px; height: 33px; border: 4px solid #3170db; border-top: 4px solid transparent;
+  border-radius: 50%; animation: sub-spin .9s linear infinite;
+}
+@keyframes sub-spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 700px) {
+  .submittals-card { padding: 11px 2vw 14px 2vw;}
+  .submittals-title { font-size: 1.13rem;}
+  .sub-list li { font-size:.97rem; padding:12px 10px;}
+} */

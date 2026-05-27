@@ -1,0 +1,276 @@
+/* Root - NO overflow anywhere */
+.contract-full-root {
+  min-height: 100vh;
+  background: linear-gradient(100deg, #f0f5fc 0%, #fafdff 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Header - Fixed properly */
+.page-header {
+  width: 100%;
+  background: linear-gradient(90deg, #ffffff 0%, #f4f9ff 100%);
+  box-shadow: 0 3px 16px rgba(40, 74, 110, 0.07);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  min-height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #e8f0ff;
+  box-sizing: border-box;
+}
+
+.back-btn {
+  background: linear-gradient(135deg, #e4ecfa 0%, #d6e6f8 100%);
+  color: #265dbe;
+  border: 1.5px solid #c2d9f3;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 24px;
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: all 0.24s;
+  box-shadow: 0 2px 8px rgba(38, 93, 190, 0.07);
+  flex-shrink: 0;
+}
+
+.back-btn:hover {
+  background: linear-gradient(135deg, #d2e2fe 0%, #c4dcf9 100%);
+  box-shadow: 0 4px 16px rgba(38, 93, 190, 0.16);
+  transform: translateY(-1px);
+}
+
+.contract-filename {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2250a2;
+  text-align: center;
+  flex: 1;
+  padding: 0 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Main content */
+.contract-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.contract-section {
+  margin: 32px auto 0 auto;
+  width: 90%;
+  max-width: 1100px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 32px rgba(44, 86, 161, 0.08);
+  padding: 32px 24px;
+  box-sizing: border-box;
+}
+
+.section-heading {
+  color: #1760d0;
+  font-size: 1.3rem;
+  margin: 0 0 20px 0;
+  font-weight: 700;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e5f0fc;
+}
+
+/* Fields table - NO overflow */
+.fields-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  box-sizing: border-box;
+}
+
+.fields-table {
+  width: 100%;
+  min-width: 400px;
+  border-collapse: separate;
+  border-spacing: 0;
+  box-shadow: 0 2px 12px rgba(70, 105, 168, 0.04);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.fields-table th,
+.fields-table td {
+  padding: 12px 16px;
+  font-size: 1rem;
+  border-bottom: 1.5px solid #e8f0fc;
+  text-align: left;
+}
+
+.fields-table th {
+  color: #2556a4;
+  width: 38%;
+  font-weight: 700;
+  background: #f4f8fc;
+}
+
+.fields-table td {
+  color: #1d2c49;
+  background: #fdfdff;
+}
+
+.fields-table td.empty {
+  color: #bcc5d2;
+  font-style: italic;
+}
+
+.fields-table tbody tr:hover {
+  background: #f7fbff;
+}
+
+/* Submittals table - NO overflow */
+.submittal-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+
+.submittal-table {
+  width: 100%;
+  min-width: 500px;
+  border-collapse: separate;
+  border-spacing: 0;
+  box-shadow: 0 2px 12px rgba(70, 105, 168, 0.04);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.submittal-table th,
+.submittal-table td {
+  padding: 13px 14px;
+  font-size: 1rem;
+  text-align: left;
+  border-bottom: 1.5px solid #e3eefd;
+}
+
+.submittal-table th {
+  color: #3063b5;
+  background: #eaf3fc;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.submittal-table tr {
+  background: #fbfdff;
+}
+
+.submittal-table tbody tr:hover {
+  background: #f0f9ff;
+}
+
+.submittal-table .sno {
+  color: #5077ba;
+  font-weight: 700;
+  text-align: center;
+  width: 60px;
+}
+
+.submittal-table .item {
+  color: #0e3570;
+  font-weight: 600;
+}
+
+.submittal-table .page {
+  color: #274368;
+  text-align: center;
+}
+
+.submittal-table .reason {
+  color: #596872;
+}
+
+.empty-table-msg {
+  color: #97a7ba;
+  font-style: italic;
+  font-size: 1.08rem;
+  padding: 36px 0;
+  text-align: center;
+}
+
+/* Loader */
+.spinner {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.loader {
+  width: 32px;
+  height: 32px;
+  border: 4px solid #2270e0;
+  border-top: 4px solid transparent;
+  border-radius: 50%;
+  animation: contract-spin 0.8s linear infinite;
+}
+
+@keyframes contract-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error {
+  color: #d9534f;
+  font-weight: 600;
+  margin: 16px 0;
+  text-align: center;
+}
+
+.empty {
+  color: #b2b2b2;
+  font-style: italic;
+}
+
+/* Responsive - NO overflow on mobile */
+@media (max-width: 1200px) {
+  .contract-section {
+    width: 95%;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 0 12px;
+  }
+  .contract-filename {
+    font-size: 1.1rem;
+  }
+  .back-btn {
+    font-size: 0.9rem;
+    padding: 7px 14px;
+  }
+  .contract-section {
+    width: 95%;
+    padding: 20px 16px;
+    margin-top: 20px;
+  }
+  .section-heading {
+    font-size: 1.15rem;
+  }
+  .fields-table th,
+  .fields-table td,
+  .submittal-table th,
+  .submittal-table td {
+    padding: 10px 8px;
+    font-size: 0.92rem;
+  }
+}
