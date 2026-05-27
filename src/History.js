@@ -19,7 +19,7 @@ export default function HistoryPage() {
       console.log("Starting status polling for 'processing' documents...");
       pollIntervalRef.current = setInterval(() => {
         console.log("Polling for new statuses...");
-        fetch("http://localhost:5004/api/history")
+        fetch("https://contract-extraction-server-u2ad.onrender.com/api/history")
           .then((r) => r.json())
           .then((data) => {
             if (data.success) {
@@ -48,7 +48,7 @@ export default function HistoryPage() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5004/api/history")
+    fetch("https://contract-extraction-server-u2ad.onrender.com/api/history")
       .then((r) => r.json())
       .then((data) => {
         if (data.success) {

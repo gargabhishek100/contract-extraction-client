@@ -36,8 +36,8 @@ export default function ContractDetail() {
   useEffect(() => {
     setLoad(true); setErr("");
     Promise.all([
-      fetch(`http://localhost:5004/api/summarize/${id}`).then(r=>r.json()),
-      fetch(`http://localhost:5004/api/submittals/${id}`).then(r=>r.json())
+      fetch(`https://contract-extraction-server-u2ad.onrender.com/api/summarize/${id}`).then(r=>r.json()),
+      fetch(`https://contract-extraction-server-u2ad.onrender.com/api/submittals/${id}`).then(r=>r.json())
     ]).then(([summary, subm]) => {
       if (!summary.success) throw new Error(summary.error || "Summary failed");
       if (!subm.success) throw new Error(subm.error || "Submittals failed");

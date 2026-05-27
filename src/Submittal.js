@@ -18,7 +18,7 @@
 //       setLoad(true); setErr(""); setList(null);
 //       if (id) {
 //         try {
-//           const r = await fetch(`http://localhost:5004/api/submittals/${id}`);
+//           const r = await fetch(`https://contract-extraction-server-u2ad.onrender.com/api/submittals/${id}`);
 //           const j = await r.json();
 //           if (!r.ok) throw new Error(j.error);
 //           setList(j.submittals || []);
@@ -34,7 +34,7 @@
 //       }
 //       try {
 //         const fd = new FormData(); fd.append("pdf", file);
-//         const r  = await fetch("http://localhost:5004/api/submittals", {
+//         const r  = await fetch("https://contract-extraction-server-u2ad.onrender.com/api/submittals", {
 //           method: "POST", body: fd
 //         });
 //         const j  = await r.json();

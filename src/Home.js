@@ -22,7 +22,7 @@ export default function HomePage() {
     setLoading(true); setError(""); setId(null); setSuccess(false);
     try {
       const fd = new FormData(); fd.append("pdf", file);
-      const r = await fetch("http://localhost:5004/api/summarize", { 
+      const r = await fetch("https://contract-extraction-server-u2ad.onrender.com/api/summarize", { 
         method: "POST", 
         body: fd 
       });
