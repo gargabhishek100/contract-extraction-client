@@ -9,36 +9,45 @@ export default function HistoryPage() {
   const nav = useNavigate();
   const pollIntervalRef = useRef(null); // Holds the interval ID
 
-  // This function starts polling ONLY if there are 'processing' items
+  // This function starts polling ONLY if there are 'pending' or 'processing' items
   const startPollingIfNeeded = (files) => {
     const needsPolling = files.some(
-      (file) => file.status === 'processing'
+      (file) => file.status === 'pending' || file.status === 'processing'
     );
 
     if (needsPolling && !pollIntervalRef.current) {
-      console.log("Starting status polling for 'processing' documents...");
+      console.log("Starting status polling for pending/processing documents...");
       pollIntervalRef.current = setInterval(() => {
-        console.log("Polling for new statuses...");
-        fetch("https://contract-extraction-server-u2ad.onrender.com/api/history")
-          .then((r) => r.json())
-          .then((data) => {
-            if (data.success) {
-              setList(data.files);
-              const stillProcessing = data.files.some(
-                (f) => f.status === 'processing'
-              );
-              if (!stillProcessing) {
-                console.log("All processing finished. Stopping poll.");
-                clearInterval(pollIntervalRef.current);
-                pollIntervalRef.current = null;
-              }
-            }
-          })
-          .catch((e) => {
-            console.error("Polling failed, stopping.", e);
+        setList((currentList) => {
+          const processingItems = currentList.filter(
+            (file) => file.status === 'pending' || file.status === 'processing'
+          );
+
+          if (processingItems.length === 0) {
+            console.log("All processing finished. Stopping poll.");
             clearInterval(pollIntervalRef.current);
             pollIntervalRef.current = null;
+            return currentList;
+          }
+
+          console.log(`Polling status for ${processingItems.length} documents...`);
+          processingItems.forEach((item) => {
+            fetch(`https://contract-extraction-server-u2ad.onrender.com/api/status/${item._id}`)
+              .then((r) => r.json())
+              .then((statusData) => {
+                if (statusData.success && statusData.status !== item.status) {
+                  setList((latestList) =>
+                    latestList.map((f) =>
+                      f._id === item._id ? { ...f, status: statusData.status } : f
+                    )
+                  );
+                }
+              })
+              .catch((e) => console.error(`Failed to poll status for ${item._id}:`, e));
           });
+
+          return currentList;
+        });
       }, 5000);
     } else if (!needsPolling && pollIntervalRef.current) {
       console.log("No items are processing. Clearing existing poll.");

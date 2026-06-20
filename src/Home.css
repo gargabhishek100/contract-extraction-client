@@ -143,6 +143,19 @@
   text-align: center;
 }
 
+.home-waking-msg {
+  color: #856404;
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-top: 14px;
+  text-align: center;
+  animation: home-pulse 2s ease-in-out infinite;
+}
+
 .home-btn-row {
   margin-top: 26px;
   text-align: center;

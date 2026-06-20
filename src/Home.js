@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
@@ -9,7 +9,27 @@ export default function HomePage() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [uploadedFileName, setUploadedFileName] = useState("");
+  const [serverWaking, setServerWaking] = useState(false);
   const nav = useNavigate();
+
+  useEffect(() => {
+    const wakeTimer = setTimeout(() => {
+      setServerWaking(true);
+    }, 1500);
+
+    fetch("https://contract-extraction-server-u2ad.onrender.com/health")
+      .then((r) => {
+        clearTimeout(wakeTimer);
+        setServerWaking(false);
+      })
+      .catch((e) => {
+        clearTimeout(wakeTimer);
+        setServerWaking(false);
+        console.warn("Backend ping failed. Server might be offline or waking up.", e);
+      });
+
+    return () => clearTimeout(wakeTimer);
+  }, []);
 
   const handleFile = (e) => {
     setFile(e.target.files[0]);
@@ -77,6 +97,11 @@ export default function HomePage() {
               {file ? file.name : "Click to upload your PDF"}
             </label>
           </div>
+          {serverWaking && (
+            <p className="home-waking-msg">
+              ⏳ Backend server is waking up... Please wait (can take up to 1 minute).
+            </p>
+          )}
           {error && <p className="home-error-msg">{error}</p>}
           <div className="home-btn-row">
             <button className="home-upload-btn" onClick={extractCoreFields} disabled={loading || success}>
